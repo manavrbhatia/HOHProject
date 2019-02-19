@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 9, 2018, 11:43:22 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="Guest" table="GUEST">
+        <id name="email" type="java.lang.String">
+            <column name="EMAIL" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="java.lang.String">
+            <column name="FIRSTNAME" />
+        </property>
+        <property name="lastName" type="java.lang.String">
+            <column name="LASTNAME" />
+        </property>
+        <property name="phoneNumber" type="int">
+            <column name="PHONENUMBER" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="donationAmount" type="double">
+            <column name="DONATIONAMOUNT" />
+        </property>
+        <property name="timesDonated" type="int">
+            <column name="TIMESDONATED" />
+        </property>
+    </class>
+</hibernate-mapping>
