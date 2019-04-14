@@ -1,0 +1,92 @@
+
+USE homeOfHope; 
+CREATE TABLE `group` (
+	`table_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`table_number` bigint(20) NOT NULL,
+	`table_owner_id` bigint(20) NOT NULL,
+	`max_capacity` bigint(20) NOT NULL,
+	`is_premium` BINARY NOT NULL DEFAULT '0',
+	`comments` TEXT,
+	PRIMARY KEY (`table_id`)
+);
+
+CREATE TABLE `table_owner` (
+	`owner_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`user_id` bigint(20) NOT NULL,
+	`owner_name` TEXT NOT NULL,
+	`owner_phone` int(13),
+	`owner_email` TEXT,
+	PRIMARY KEY (`owner_id`)
+);
+
+CREATE TABLE `board_member` (
+	`board_member_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`owner_id` bigint(20) NOT NULL ,
+	`user_id` bigint(20) NOT NULL,
+	`member_name` varchar(100) NOT NULL,
+	PRIMARY KEY (`board_member_id`)
+);
+
+CREATE TABLE `guest` (
+	`guest_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`guest_name` varchar(100) NOT NULL DEFAULT 'Guest',
+	`guest_phone` varchar(15) DEFAULT 'Guest',
+	`guest_email` varchar(50),
+	`is_sponsor` BINARY NOT NULL DEFAULT '0',
+	`table_id` bigint(20) NOT NULL,
+    `user_type_id` bigint(20) NOT NULL ,
+	PRIMARY KEY (`guest_id`)
+);
+
+CREATE TABLE `donation` (
+	`donation_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`guest_id` bigint(20) NOT NULL,
+	`donation_amount` bigint(20),
+	`payment_method_id` bigint(20) NOT NULL,
+	`payment_info` TEXT,
+	`is_company_matching` BINARY DEFAULT '0',
+	`company_info` TEXT,
+	`created_on` TIMESTAMP NOT NULL,
+	`modified_on` TIMESTAMP NOT NULL,
+	`updated_by` bigint(20) NOT NULL,
+	`comments` TEXT,
+	PRIMARY KEY (`donation_id`)
+);
+
+CREATE TABLE `payment_method` (
+	`payment_method_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`payment_type` varchar(50) NOT NULL,
+	PRIMARY KEY (`payment_method_id`)
+);
+
+CREATE TABLE `users` (
+	`user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`username` varchar(100) NOT NULL UNIQUE,
+	`firstname` varchar(100) NOT NULL UNIQUE,
+	`lastname` varchar(100) NOT NULL UNIQUE,
+	`password` varchar(100) NOT NULL,
+	`user_email` varchar(100) NOT NULL,
+	`user_phone` varchar(20),
+	`user_type_id` bigint(20) NOT NULL,
+	PRIMARY KEY (`user_id`)
+);
+
+
+ALTER TABLE `group` ADD CONSTRAINT `table_fk0` FOREIGN KEY (`table_owner_id`) REFERENCES `table_owner`(`owner_id`);
+
+ALTER TABLE `table_owner` ADD CONSTRAINT `table_owner_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
+
+ALTER TABLE `board_member` ADD CONSTRAINT `board_member_fk0` FOREIGN KEY (`owner_id`) REFERENCES `table_owner`(`owner_id`);
+
+ALTER TABLE `board_member` ADD CONSTRAINT `board_member_fk1` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
+
+ALTER TABLE `guest` ADD CONSTRAINT `guest_fk0` FOREIGN KEY (`table_id`) REFERENCES `table`(`table_id`);
+
+ALTER TABLE `donation` ADD CONSTRAINT `donation_fk0` FOREIGN KEY (`guest_id`) REFERENCES `guest`(`guest_id`);
+
+ALTER TABLE `donation` ADD CONSTRAINT `donation_fk1` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_method`(`payment_method_id`);
+
+ALTER TABLE `donation` ADD CONSTRAINT `donation_fk2` FOREIGN KEY (`updated_by`) REFERENCES `users`(`user_id`);
+
+ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`user_type_id`) REFERENCES `user_type`(`user_type_id`);
+
