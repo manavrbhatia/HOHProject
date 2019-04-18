@@ -1,0 +1,29 @@
+.errors{
+  margin-left: 5px;
+  color: red;
+}
+
+.registerForm{
+  margin-top: 5%;
+  margin-left: 15%;
+  display: table;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.registerForm .row{
+  display: table-row;
+  border-bottom: 20px solid transparent;
+}
+
+.registerForm .row label{
+  display: table-cell;
+  width: 30%;
+  vertical-align: middle;
+}
+
+.registerForm .row input{
+  display: table-cell;
+  width: 60%;
+  padding: 10px 5px;
+}

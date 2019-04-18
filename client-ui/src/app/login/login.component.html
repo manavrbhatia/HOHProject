@@ -1,0 +1,17 @@
+<div class="login-container">
+  <form class="loginForm" [formGroup] = "loginForm">
+    <div class="row">
+        <label>Username</label>
+        <input type="text" formControlName="username" />
+    </div>
+    <div class="row">
+        <label>Password</label>
+        <input type="password" formControlName="password" />
+        <div style="font-size: 15px;font-weight: bold; float:right; display: block; width: 55%;"><a style="color: #731919;" href=#>Forgot Password</a></div>
+    </div>
+    <div style="width: 70%; text-align: right;">
+      <button class="btn btn-default">Login</button>
+      <button style="margin-left: 20px;" onClick="window.location='/register'" class="btn btn-default"> Register </button>
+      </div>
+  </form>
+</div>

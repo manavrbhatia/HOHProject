@@ -1,0 +1,3 @@
+rootProject.name = 'hoh-application'
+include 'server'
+

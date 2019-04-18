@@ -1,0 +1,36 @@
+.login-container{
+    background: url('https://hohinc.org/assets/img/home_computer_education.jpg');
+    background-size: cover;
+    margin:0;
+    padding-top: 50px;
+    margin-top: 10px;
+    height: 500px;
+}
+
+
+.loginForm{
+  padding: 20px;
+  background: rgba(38, 66, 73, 0.70);
+  border-collapse: collapse;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 10%;
+}
+
+.loginForm .row{
+  display: table-row;
+  border-bottom: 20px solid transparent;
+}
+
+.loginForm .row label{
+  display: table-cell;
+  width: 30%;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.loginForm .row input{
+  display: table-cell;
+  width: 90%;
+  padding: 10px 5px;
+}

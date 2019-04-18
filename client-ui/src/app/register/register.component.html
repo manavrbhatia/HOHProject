@@ -1,0 +1,45 @@
+<form class="registerForm" [formGroup]= "registerForm">
+  <div class="row">
+    <label>First Name: </label>
+    <input type="text" formControlName="firstName" />
+    <span *ngIf="registerForm.controls.firstName.errors" class="errors">
+      <span *ngIf="registerForm.controls.firstName.errors.required">*</span>
+    </span>
+  </div>
+  <div class="row">
+    <label>Last Name: </label>
+    <input type="text" formControlName="lastName" />
+    <span *ngIf="registerForm.controls.lastName.errors" class="errors">
+      <span *ngIf="registerForm.controls.lastName.errors.required">*</span>
+    </span>
+  </div>
+  <div class="row">
+    <label>Email: </label>
+    <input type="email" formControlName="email" />
+    <span *ngIf="registerForm.controls.email.errors" class="errors">
+      <span *ngIf="registerForm.controls.email.errors.required">*</span>
+    </span>
+  </div>
+  <div class="row">
+    <label>Password: </label>
+    <input type="password" formControlName="password" />
+    <span *ngIf="registerForm.controls.password.errors" class="errors">
+      <span *ngIf="registerForm.controls.password.errors.required">*</span>
+    </span>
+  </div>
+  <div class="row">
+    <label>Re-type Password: </label>
+    <input type="password" formControlName="rePassword" />
+    <span *ngIf="registerForm.controls.rePassword.errors" class="errors">
+      <span *ngIf="registerForm.controls.rePassword.errors.required">*</span>
+    </span>
+  </div>
+  <div class="row">
+    <label>Phone: </label>
+    <input type="text" formControlName="phone" />
+  </div>
+  <div class="row">
+    <button class="btn btn-default">Register</button>
+    <button style="margin-left: 50px;" class="btn btn-cancel">Cancel</button>
+  </div>
+</form>
